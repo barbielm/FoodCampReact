@@ -12,6 +12,6 @@ export default function App(){
             <Pratos />
             <Bebidas />
             <Sobremesas />
-    </div>
+        </div>
     )
 }

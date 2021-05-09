@@ -132,7 +132,25 @@ li .preco{
     font-size: 16px;
     line-height: 18px;
     color: #333333;
+    display: flex;
+    justify-content: space-between;
 }
+li .quantidade{
+    width: 50px;
+    height: 19px;
+}
+li .quantidade button{
+    border: none;
+    background-color: inherit;
+    font-weight: bold;
+}
+li .quantidade .minus{
+    color: #CF2B2B;
+}
+li .quantidade .plus{
+    color: #32B72F;
+}
+
 .confirmar-pedido{
     width: 90%;
     height: 350px;
