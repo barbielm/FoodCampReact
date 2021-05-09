@@ -65,7 +65,7 @@ body{
     width: 100%;
     margin: 0 0 27px 0;
 }
-.cardapio:first-child{
+.cardapio:nth-child(3){
     margin-top: 125px;
 }
 .cardapio:last-child{
