@@ -1,18 +1,33 @@
 import React from 'react'
 
 export default function Bebida(props){
-    const {nome, descricao, preco, id, img} = props
+    const {nome, descricao, preco, id, img, escolheuPrato, escolheuBebida, escolheuSobremesa, setEscolheuBebida} = props
     const [qtd, setQtd] = React.useState(1)
     const [isSelected, setIsSelected] = React.useState(false)
+    let escolheuUmDeCada = false
 
     function selecionarItem(){
-        if(isSelected){
+        if(isSelected || escolheuBebida){
             return
         }
         const item = document.querySelector('#' + id)
         item.classList.add("selecionado")
         item.querySelector(".quantidade").classList.remove("oculto")
         setIsSelected(true)
+        setEscolheuBebida(true)
+        if(escolheuPrato && escolheuSobremesa){
+            liberarPedido()
+        }
+    }
+
+    function liberarPedido(){
+            document.querySelector(".inferior #habilitado").classList.remove("oculto")
+            document.querySelector(".inferior #desabilitado").classList.add("oculto")
+    }
+
+    function desabilitarPedido(){
+            document.querySelector(".inferior #habilitado").classList.add("oculto")
+            document.querySelector(".inferior #desabilitado").classList.remove("oculto")
     }
 
     function desmarcarItem(){
@@ -24,7 +39,9 @@ export default function Bebida(props){
     function excluirItem(){
         if(qtd === 1){
             desmarcarItem()
+            desabilitarPedido()
             setIsSelected(false)
+            setEscolheuBebida(false)
             return
         }
         setQtd(qtd - 1)

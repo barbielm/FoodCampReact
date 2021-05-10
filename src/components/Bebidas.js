@@ -8,12 +8,16 @@ const bebidas = [{nome: "Coquinha gelada", descricao: "Lata 350ml", preco: "R$ 4
                 {nome: "São Geraldo", descricao: "Pitchulinha de 250ml", preco: "R$ 2,50", id: "bebida2", img: saoGeraldo},
                 {nome: "Cachaça Pitú", descricao: "1 litro de cana", preco: "R$ 10,00", id: "bebida3", img: pitu}]
 
-export default function Bebidas(){
+export default function Bebidas(props){
     return(
         <div class="cardapio ">
             <p>Agora, sua bebida</p>
             <ul class="pratos">
-                {bebidas.map(b => <Bebida nome={b.nome} descricao={b.descricao} preco={b.preco} id={b.id} img={b.img} />)}
+                {bebidas.map(b => <Bebida nome={b.nome} descricao={b.descricao} preco={b.preco} id={b.id} img={b.img} 
+                escolheuPrato={props.escolheuPrato} setEscolheuPrato={props.setEscolheuPrato} 
+                escolheuBebida={props.escolheuBebida} setEscolheuBebida={props.setEscolheuBebida}
+                escolheuSobremesa={props.escolheuSobremesa} setEscolheuSobremesa={props.setEscolheuSobremesa}
+                />)}
             </ul>
         </div>
     )

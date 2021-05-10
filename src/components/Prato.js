@@ -1,18 +1,32 @@
 import React from 'react'
 
 export default function Prato(props){
-    const {nome, descricao, preco, id, img} = props
+    const {nome, descricao, preco, id, img, escolheuPrato, escolheuBebida, escolheuSobremesa, setEscolheuPrato} = props
     const [qtd, setQtd] = React.useState(1)
     const [isSelected, setIsSelected] = React.useState(false)
 
     function selecionarItem(){
-        if(isSelected){
+        if(isSelected || escolheuPrato){
             return
         }
         const item = document.querySelector('#' + id)
         item.classList.add("selecionado")
         item.querySelector(".quantidade").classList.remove("oculto")
         setIsSelected(true)
+        setEscolheuPrato(true)
+        if(escolheuBebida && escolheuSobremesa){
+            liberarPedido()
+        }
+    }
+
+    function liberarPedido(){
+        document.querySelector(".inferior #habilitado").classList.remove("oculto")
+        document.querySelector(".inferior #desabilitado").classList.add("oculto")
+    }
+
+    function desabilitarPedido(){
+            document.querySelector(".inferior #habilitado").classList.add("oculto")
+            document.querySelector(".inferior #desabilitado").classList.remove("oculto")
     }
 
     function desmarcarItem(){
@@ -24,7 +38,9 @@ export default function Prato(props){
     function excluirItem(){
         if(qtd === 1){
             desmarcarItem()
+            desabilitarPedido()
             setIsSelected(false)
+            setEscolheuPrato(false)
             return
         }
         setQtd(qtd - 1)

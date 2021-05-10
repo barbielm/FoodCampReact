@@ -8,12 +8,16 @@ const pratos = [{nome: "Frango Yin Yang", descricao: "Um pouco de batata, um pou
                 {nome: "Lamém do naruto", descricao: "Venha sentir o sabor da nostalgia", preco: "R$ 20,90", id: "prato2", img: lamem},
                 {nome: "Pastelzin de carne", descricao: "O bom e velho", preco: "R$ 4,90", id: "prato3", img: pastel}]
 
-export default function Pratos(){
+export default function Pratos(props){
     return(
         <div class="cardapio ">
             <p>Primeiro, seu prato</p>
             <ul class="pratos">
-                {pratos.map(p => <Prato nome={p.nome} descricao={p.descricao} preco={p.preco} id={p.id} img={p.img} />)}
+                {pratos.map(p => <Prato nome={p.nome} descricao={p.descricao} preco={p.preco} id={p.id} img={p.img} 
+                escolheuPrato={props.escolheuPrato} setEscolheuPrato={props.setEscolheuPrato} 
+                escolheuBebida={props.escolheuBebida} setEscolheuBebida={props.setEscolheuBebida}
+                escolheuSobremesa={props.escolheuSobremesa} setEscolheuSobremesa={props.setEscolheuSobremesa}
+                />)}
             </ul>
         </div>
     )
